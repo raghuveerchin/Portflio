@@ -2,14 +2,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% load staticfiles %}
+      {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
 <!--    <title>Raghuveer Chintakunta· Bootstrap v5.0</title>-->
-    <title>Raghuveer Chintakunt</title>
+    <title>Raghuveer Chintakunt's Blogs</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
 
@@ -59,7 +59,7 @@
         <div class="navbar-nav ms-auto">
           <a class="nav-link" href="#">Insta</a>
           <a class="nav-link" href="{% static 'Raghuveer_Resume.pdf'%}">Resume</a>
-          <a class="nav-link" href="{%url 'allblogs'%}">Blog</a>
+          <a class="nav-link active" href="{%url 'allblogs'%}">Blog</a>
         </div>
       </div>
     </div>
@@ -67,52 +67,23 @@
 </header>
 
 <main>
-
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Hi, I am Raghu</h1>
-        <p class="lead text-muted">I am intreseted in web application and learning things now with DJango Framework.</p>
-        <p>
-          <a href="mailto:raghuveer.chin@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-        <img src="{% static 'Raghuveer.jpg'%}" height="200" width="200" />
-      </div>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
+    <h1 class="text-center pt-3">Welcome to Raghu's Blogs </h1>
+    <br />
+    <br />
     <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <!--<div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>-->
-        {% for job in jobs.all %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}"/>
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
+        <h2>Latest blogs</h2>
+        <hr />
+        <br />
+        {% for blog in allblogs.all %}
+        <div class="container">
+            <a href="{%url 'detail' blog.id%}"><h4>{{ blog.title }}</h4></a>
+            {{ blog.pub_data_fmt }}
+            <br />
+            <p>{{ blog.summary }}</p>
+            <img class="image.fluid" src="{{ blog.image.url }}"/>
         </div>
-        {%endfor%}
+        {% endfor %}
     </div>
-  </div>
 
 </main>
 
